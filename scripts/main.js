@@ -6,7 +6,7 @@ import { Venues } from "./venues.js"
 const applicationHTML = `
 <h1 class="title">Tour Some Sugar On Me</h1>
 <article class="bookings">
-    <h2>Bookings</h2>
+    <h3>Bookings</h3>
     ${Bookings()}
 </article>
 <article class="details">

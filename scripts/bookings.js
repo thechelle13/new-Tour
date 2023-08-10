@@ -1,6 +1,7 @@
-import { getBookings, getVenues } from "./database.js";
+import { getBookings, getBands } from "./database.js";
+
 const bookings = getBookings()
-//const liveVenue = getVenues()
+const bands = getBands()
 
 // add event listener that displays on multi lines 
 // Rocket Pumpkins
@@ -8,17 +9,19 @@ const bookings = getBookings()
 // Formed in 2005
 // 3 band members
 
+document.addEventListener (
+    "click",
+    (thisClick) => {
+        const itemClicked = thisClick.target
+        for (const band of bands) {
+            if (itemClicked.dataset.type === "booking") {
+                
+                window.alert(`${band.name}\n${band.genre}\nFormed:${band.formed}\nBand #${band.members}`)
+            }
+        }    
+    }
+)
 
-// const findBookings = (venue, allBands) => {
-//     let bookingAssignments = null
-//     // debugger
-//     for (const band of allBands) {
-//         if(band.id === venue.bandId) {
-//             bookingAssignments = band
-//         }
-//     } 
-//     return bookingAssignments
-// }
 
 
 export const Bookings = () => {
@@ -27,9 +30,11 @@ export const Bookings = () => {
 
         for(const book of bookings) {
             //const currentBookings = findBookings(book)
-            bookingHTML += `<li>${book.name} is performing at ${book.name}</li>`
+            bookingHTML += `<li data-type="booking"
+                                
+            
+                                >${book.name} is performing at ${book.venue}</li>`
         }
-    bookingHTML = "</ul>"
+    bookingHTML += "</ul>"
     return bookingHTML
-
 }
